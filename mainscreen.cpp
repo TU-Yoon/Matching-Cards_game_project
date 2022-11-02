@@ -67,7 +67,7 @@ int Screen::MainMenu() {
 
 		c = _getch(); //키보드 입력 받아서 해당 위치로 이동 시켜줌
 		if (c == 80) {	//키보드 down키 입력값이 80
-			if (sel < 2)
+			if (sel < 3)
 				sel += 1;
 		}
 		else if (c == 72) {	//키보드 up키 입력값이 72
