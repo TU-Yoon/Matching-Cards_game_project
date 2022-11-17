@@ -13,8 +13,8 @@ int main() {
 	CursorView(false);	//커서 안 보이게 하기
 	system("mode con cols=130 lines=40 | title Card Matching Game(무지개조)");	//콘솔 창 크기와 제목
 	Screen screen;	//메인화면 설정
-	Game game;	//게임에 필요한 요소 설정
-	
+	Game game;	//게임 객체 생성
+
 	while (sel != 1) {
 		sel = screen.MainMenu();
 		if (sel == 2) {
@@ -22,7 +22,12 @@ int main() {
 		}
 	}
 	while (sel == 1) {
-		game.gamescreen();	//게임 실행 버튼 누르면 게임 화면 표시
+		system("mode con cols=90 lines=20 | title Card Matching Game(무지개조)");	//콘솔 창 크기와 제목
+		game.Init1();
+		game.printQuestion1(); //물음표 맵
+		game.prinextra(40, 0);//카운트, 스테이지 표시
+		game.MovePos();//방향키로 커서 이동
 	}
-	return 0;
 }
+
+

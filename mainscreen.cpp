@@ -1,9 +1,9 @@
 #include "screen.h"
 #include "system.h"
-#include <iostream>
-#include <cstdlib>
-#include <conio.h>
-#include <windows.h>
+#include <iostream>	
+#include <cstdlib>	//exit 사용하기 위해
+#include <conio.h>	//_getch() 사용하기 위해
+#include <windows.h> //콘솔 초기화, 글씨 색 설정 위해
 using namespace std;
 
 Screen::Screen() {
@@ -12,12 +12,12 @@ Screen::Screen() {
 }
 
 void printCard(int x, int y) {	//제목 출력
-	gotoxy(x, y);   printf("  ■■      ■■    ■■■    ■■■  ");
-	gotoxy(x, y+1); printf("■    ■  ■    ■  ■    ■  ■    ■");
-	gotoxy(x, y+2); printf("■        ■    ■  ■    ■  ■    ■");
-	gotoxy(x, y+3); printf("■        ■■■■  ■■■    ■    ■");
-	gotoxy(x, y+4); printf("■    ■  ■    ■  ■    ■  ■    ■");
-	gotoxy(x, y+5); printf("  ■■    ■    ■  ■    ■  ■■■  ");
+	gotoxy(x, y);	  printf("  ■■      ■■    ■■■    ■■■  ");
+	gotoxy(x, y + 1); printf("■    ■  ■    ■  ■    ■  ■    ■");
+	gotoxy(x, y + 2); printf("■        ■    ■  ■    ■  ■    ■");
+	gotoxy(x, y + 3); printf("■        ■■■■  ■■■    ■    ■");
+	gotoxy(x, y + 4); printf("■    ■  ■    ■  ■    ■  ■    ■");
+	gotoxy(x, y + 5); printf("  ■■    ■    ■  ■    ■  ■■■  ");
 }
 
 void printMatching(int x, int y) {
@@ -66,12 +66,10 @@ int Screen::MainMenu() {
 		char c;
 
 		c = _getch(); //키보드 입력 받아서 해당 위치로 이동 시켜줌
-		if (c == 80) {	//키보드 down키 입력값이 80
-			if (sel < 3)
+		if (c == 80 || c ==72) {	//키보드 down키 입력값이 80, up 입력값이 72 -> 기존에 두개로 나눴던 입력if문을 하나로 만들어 로터리 형식으로 사용
+			if (sel < 2)
 				sel += 1;
-		}
-		else if (c == 72) {	//키보드 up키 입력값이 72
-			if (sel > 1)
+			else if (sel > 1)
 				sel -= 1;
 		}
 		if (c == 13) {		//키보드 enter키 입력값이 13
